@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import ProtectedRoute from "./routers/ProtectedRoute.jsx";
 import ProtectedRouteAdmin from "./routers/ProtectedRouteAdmin.jsx";
+import AuthPage from "./pages/AuthPage";
 
 import Navbar from "./Component/navbar.jsx";
 import Home from "./Component/Home";
@@ -30,13 +31,16 @@ import Enquiry from "./Component/Enquiry.jsx";
 import Newbill from "./Component/Newbill.jsx";
 
 function App() {
-  const [role] = useState("employee");
+  const [role, setRole] = useState("employee");
 
   return (
     <Router>
       <Navbar />
 
       <Routes>
+        {/* PUBLIC */}
+        <Route path="/auth" element={<AuthPage setRole={setRole} />} />
+
         {/* PROTECTED */}
         <Route
           path="/"
