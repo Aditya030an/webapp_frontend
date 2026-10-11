@@ -28,3 +28,6 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .idea
 *.sw?
+
+# Preserved history of formerly-nested repos (local only)
+.git.bak/
