@@ -1,0 +1,24 @@
+#!/bin/sh
+# Blocks a push if the frontend production build fails.
+# Bypass intentionally with: git push --no-verify
+
+repo_root=$(git rev-parse --show-toplevel)
+app="$repo_root/webapp/project"
+
+[ -d "$app" ] || exit 0
+
+echo "pre-push: building webapp/project ..."
+if ! (cd "$app" && npm run build >/tmp/prepush-build.log 2>&1); then
+  echo ""
+  echo "  PUSH BLOCKED - 'npm run build' failed."
+  echo ""
+  tail -20 /tmp/prepush-build.log | sed 's/^/    /'
+  echo ""
+  echo "  Full log: /tmp/prepush-build.log"
+  echo "  Fix the error, or bypass with: git push --no-verify"
+  echo ""
+  exit 1
+fi
+
+echo "pre-push: build OK"
+exit 0
