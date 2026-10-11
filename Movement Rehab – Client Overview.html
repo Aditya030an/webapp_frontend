@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Movement Rehab – Client Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#F2F6F5;--card:#fff;--ink:#14302E;--mut:#5F7573;--line:#DCE6E4;--side:#12302F;--teal:#0F766E;--ts:#D9F0EC;--wa:#B45309;--was:#FDEBD0;--bad:#B42318;--bads:#FDE4E1;--ok:#15803D;--oks:#DDF3E3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1B1A;--card:#142826;--ink:#E4F0EE;--mut:#8FA9A6;--line:#244240;--side:#0A1413;--teal:#2DB5A8;--ts:#17403C;--was:#4A3412;--wa:#F2B15A;--bads:#4A1F1B;--bad:#F2877C;--oks:#17381F;--ok:#6FD08A}}
+:root[data-theme="dark"]{--bg:#0D1B1A;--card:#142826;--ink:#E4F0EE;--mut:#8FA9A6;--line:#244240;--side:#0A1413;--teal:#2DB5A8;--ts:#17403C;--was:#4A3412;--wa:#F2B15A;--bads:#4A1F1B;--bad:#F2877C;--oks:#17381F;--ok:#6FD08A}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 Figtree,system-ui,sans-serif}
+.shell{display:grid;grid-template-columns:210px 1fr;min-height:100vh}
+aside{background:var(--side);padding:18px 10px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:3px}
+.brand{color:#fff;font-weight:700;font-size:18px;padding:0 10px 16px}
+.nv{all:unset;padding:9px 10px;border-radius:8px;cursor:pointer;color:#B9D2CF;font-weight:500}
+.nv:hover{background:rgba(255,255,255,.08)}.nv.on{background:var(--teal);color:#fff}
+.nv:focus-visible,.btn:focus-visible,select:focus-visible,input:focus-visible,.chip:focus-visible,.cell:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+main{padding:0 26px 40px;min-width:0}
+.top{display:flex;align-items:center;gap:12px;padding:14px 0;position:sticky;top:0;background:var(--bg);z-index:2}
+.top .sp{flex:1}.who{color:var(--mut);font-size:14px}
+h1{font-size:23px;margin:6px 0 2px;letter-spacing:-.01em}h2{font-size:16px;margin:0 0 12px}.sub{color:var(--mut);margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+.g{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.kpi b{display:block;font-size:25px;letter-spacing:-.02em}.kpi span{color:var(--mut);font-size:13px}
+.btn{border:0;background:var(--teal);color:#fff;padding:9px 14px;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--line)}.btn.bad{background:var(--bad)}.btn.sm{padding:5px 10px;font-size:13px}.btn.w{width:100%;margin-top:8px}
+label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:10px}
+input,select{display:block;width:100%;margin-top:4px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 12px;align-items:end}
+.wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:520px}
+th{text-align:left;color:var(--mut);font-size:13px;font-weight:600;padding:8px;border-bottom:1px solid var(--line)}td{padding:10px 8px;border-bottom:1px solid var(--line)}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12.5px;font-weight:600}
+.ok{background:var(--oks);color:var(--ok)}.wn{background:var(--was);color:var(--wa)}.bd{background:var(--bads);color:var(--bad)}.te{background:var(--ts);color:var(--teal)}
+.wk{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px;overflow-x:auto}
+.day{background:var(--bg);border-radius:8px;padding:8px;min-height:120px}.day b{font-size:13px;display:block;margin-bottom:6px}
+.chip{display:block;width:100%;text-align:left;font:inherit;font-size:12.5px;border:0;border-radius:6px;padding:5px 7px;margin-bottom:4px;cursor:pointer;background:var(--ts);color:var(--teal)}
+.chip.Completed{background:var(--oks);color:var(--ok)}.chip.Cancelled{background:var(--bads);color:var(--bad);text-decoration:line-through}.chip.sel{outline:2px solid var(--teal)}
+.cell{all:unset;display:block;text-align:center;padding:6px 4px;border-radius:6px;font-weight:600;font-size:13px;cursor:pointer;min-width:62px}
+.cM{background:var(--ts);color:var(--teal)}.cE{background:var(--was);color:var(--wa)}.cO{background:var(--line);color:var(--mut)}.cL{background:var(--bads);color:var(--bad)}
+.idc{display:flex;gap:14px;align-items:center}.qr{background:#fff;padding:5px;border-radius:6px;width:102px;height:102px;flex:none}
+.idc small{color:var(--mut)}.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;min-width:80px}.bar i{display:block;height:100%;background:var(--teal)}
+.err{color:var(--bad);min-height:20px;margin:8px 0 0;font-weight:600}
+.lg{max-width:380px;margin:12vh auto 0;padding:0 16px}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:600;display:none;z-index:9}
+.tot{background:var(--bg);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:14px}.tot b{font-size:18px}
+@media(max-width:860px){.shell{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;overflow-x:auto}.brand{display:none}.g4{grid-template-columns:1fr 1fr}.g2,.g3{grid-template-columns:1fr}main{padding:0 14px 30px}}
+</style></head>
+<body>
+<div id="app"></div><div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const inr=n=>'₹'+Math.round(n).toLocaleString('en-IN'),D=n=>'2026-10-'+String(n).padStart(2,'0'),TODAY=D(5);
+const WD=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],DAYS=[5,6,7,8,9,10,11].map(D),H=['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+const U={Admin:'MR-EMP-0009',Physiotherapist:'MR-EMP-0012',Receptionist:'MR-EMP-0011',Accountant:'MR-EMP-0013'};
+const R={Admin:['dash','appt','bill','att','shift','staff','perf'],Physiotherapist:['dash','appt','att','shift','perf'],Receptionist:['dash','appt','bill','att','staff'],Accountant:['dash','bill']};
+const L={dash:'Dashboard & reports',appt:'Appointments',bill:'Billing & GST',att:'Attendance',shift:'Shifts & leave',staff:'Staff ID & QR',perf:'Therapist performance'};
+const rnd=()=>Math.random().toString(16).slice(2,14);
+let S=[['MR-EMP-0009','Dr. Mayank Gupta','Physiotherapist','BPT, 13 yrs',1],['MR-EMP-0012','Rashi Gupta','Physiotherapist','MPT Neuro, 5 yrs',1],['MR-EMP-0010','Megha Verma','Physiotherapist','BPT (final year)',1],['MR-EMP-0011','Rimjhim Vyas','Receptionist','BBA',1],['MR-EMP-0013','Sandeep Jain','Accountant','B.Com',1],['MR-EMP-0008','Sharda Rai','Physiotherapist','MPT Neuro, 5 yrs',0]].map(a=>({id:a[0],n:a[1],r:a[2],q:a[3],st:a[4],tok:rnd()}));
+let A=[],aid=1;const add=(p,t,d,h,s)=>A.push({id:aid++,p,t,d,h,s});
+add('Anil Verma','MR-EMP-0009',5,'09:00','Completed');add('Meena Joshi','MR-EMP-0012',5,'10:00','Completed');add('Karan Mehta','MR-EMP-0009',5,'11:00','Scheduled');add('Sita Rathore','MR-EMP-0010',5,'12:00','Scheduled');add('Vikram Sethi','MR-EMP-0012',5,'16:00','Scheduled');add('Nisha Dubey','MR-EMP-0009',6,'09:00','Scheduled');add('Anil Verma','MR-EMP-0009',7,'09:00','Scheduled');add('Meena Joshi','MR-EMP-0012',7,'11:00','Scheduled');add('Karan Mehta','MR-EMP-0009',8,'10:00','Cancelled');add('Sita Rathore','MR-EMP-0010',9,'15:00','Scheduled');
+A.forEach(a=>a.d=typeof a.d=='number'?D(a.d):a.d);
+let I=[{no:'INV-2026-0410',p:'Meena Joshi',item:'Clinic Service',total:800,gst:0,disc:0,mode:'Cash',paid:1},{no:'INV-2026-0411',p:'Karan Mehta',item:'10-session package',total:7000,gst:0,disc:0,mode:'Online',paid:1},{no:'INV-2026-0412',p:'Anil Verma',item:'Home Service',total:1575,gst:75,disc:0,mode:'Online',paid:1},{no:'INV-2026-0413',p:'Sita Rathore',item:'10-session package',total:15500,gst:0,disc:0,mode:'Cash',paid:0}];
+const PRICE={'Clinic Service':800,'Home Service':1500,'10-session package':7000},CODES={WELCOME10:{k:'pct',v:10,t:'10% welcome discount'},REF500:{k:'amt',v:500,t:'₹500 referral reward'}};
+let att={};S.forEach((s,i)=>{att[s.id]={};for(let d=1;d<=4;d++)if(s.st&&!(i==2&&d==3)&&!(i==1&&d==2))att[s.id][D(d)]=1});
+let tm={};const SH=['M','E','Off','Leave'];let sh={};S.forEach((s,i)=>{sh[s.id]=DAYS.map((_,j)=>j==6?'Off':(j==(i+2)%6&&s.st&&i<3?'Leave':(i%2?'E':'M')))});
+const BASE={'MR-EMP-0009':142,'MR-EMP-0012':96,'MR-EMP-0010':38,'MR-EMP-0008':120},RATE={'MR-EMP-0009':4.8,'MR-EMP-0012':4.7,'MR-EMP-0010':4.5,'MR-EMP-0008':4.6};
+let me=null,role=null,V='dash',SEL=null,TF='all',step=1,applied=null,fsel='';
+const sName=id=>(S.find(s=>s.id==id)||{}).n||id,T=()=>S.filter(s=>s.r=='Physiotherapist'&&s.st);
+const myT=()=>role=='Physiotherapist'?me:null;
+const toast=m=>{const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2600)};
+
+function login(){$('#app').innerHTML=`<div class="lg"><div class="card"><h1>Movement Rehab</h1><p class="sub">${step==1?'Sign in to open your workspace':'Enter the 6-digit code sent to your phone'}</p>${step==1?`<label>Role<select id="role">${Object.keys(U).map(r=>`<option>${r}</option>`).join('')}</select></label><label>Email<input id="em" value="demo@movementrehab.online"></label><label>Password<input id="pw" type="password" value="demo1234"></label><button class="btn w" data-a="next">Continue</button>`:`<label>Verification code<input id="otp" inputmode="numeric" maxlength="6" placeholder="123456"></label><p class="sub">Demo code: 123456</p><button class="btn w" data-a="verify">Verify and sign in</button><button class="btn ghost w" data-a="back">Back</button>`}<p id="err" class="err"></p></div></div>`}
+
+function shell(){const m=R[role];$('#app').innerHTML=`<div class="shell"><aside><div class="brand">Movement Rehab</div>${m.map(v=>`<button class="nv ${V==v?'on':''}" data-a="go" data-v="${v}">${L[v]}</button>`).join('')}</aside><main><div class="top"><h1 style="margin:0;font-size:18px">${L[V]}</h1><span class="sp"></span><span class="who">${esc(sName(me))}, ${role}</span><button class="btn ghost sm" data-a="out">Sign out</button></div>${views[V]()}</main></div>`;if(V=='staff')qrs()}
+
+const sessCount=id=>(BASE[id]||0)+A.filter(a=>a.t==id&&a.s=='Completed').length;
+const views={
+dash(){const mt=myT(),ap=A.filter(a=>a.d==TODAY&&(!mt||a.t==mt)),rec=I.filter(i=>i.paid).reduce((s,i)=>s+i.total,0),due=I.filter(i=>!i.paid).reduce((s,i)=>s+i.total,0);
+const fin=role=='Admin'||role=='Accountant',M=[['Apr',402],['May',455],['Jun',371],['Jul',512],['Aug',589],['Sep',621]];
+return `<p class="sub">${role=='Accountant'?'Finance overview':'Monday, 5 October 2026'}</p><div class="g g4"><div class="card kpi"><span>Sessions today</span><b>${ap.length}</b></div><div class="card kpi"><span>Active patients</span><b>38</b></div><div class="card kpi"><span>Received (recent bills)</span><b>${inr(rec)}</b></div><div class="card kpi"><span>Outstanding dues</span><b>${inr(due)}</b></div></div>
+${role!='Accountant'?`<div class="card"><h2>Today's schedule</h2><div class="wrap"><table><tr><th>Time</th><th>Patient</th><th>Therapist</th><th>Status</th></tr>${ap.sort((a,b)=>a.h>b.h?1:-1).map(a=>`<tr><td>${a.h}</td><td>${esc(a.p)}</td><td>${sName(a.t)}</td><td><span class="pill ${a.s=='Completed'?'ok':a.s=='Cancelled'?'bd':'wn'}">${a.s}</span></td></tr>`).join('')||'<tr><td colspan=4>No sessions today. Book one in Appointments.</td></tr>'}</table></div></div>`:''}
+${fin?`<div class="card"><h2>Monthly report: billed (₹ thousand)</h2><div class="wrap"><table><tr><th>Month</th><th>Billed</th><th style="width:50%">Share of best month</th></tr>${M.map(m=>`<tr><td>${m[0]}</td><td>${inr(m[1]*1000)}</td><td><div class="bar"><i style="width:${m[1]/6.21}%"></i></div></td></tr>`).join('')}</table></div></div>`:''}`},
+
+appt(){const mt=myT(),tf=mt||TF,a=A.find(x=>x.id==SEL),list=A.filter(x=>tf=='all'||x.t==tf);
+return `<p class="sub">Select a booking to reschedule or cancel it, or fill the form to book a new one.</p>
+<div class="card"><div class="fr"><label>Therapist view<select id="tf" ${mt?'disabled':''}><option value="all">All therapists</option>${T().map(t=>`<option value="${t.id}" ${tf==t.id?'selected':''}>${t.n}</option>`).join('')}</select></label></div>
+<div class="wk">${DAYS.map((d,i)=>`<div class="day"><b>${WD[i]} ${d.slice(8)}</b>${list.filter(x=>x.d==d).sort((p,q)=>p.h>q.h?1:-1).map(x=>`<button class="chip ${x.s} ${x.id==SEL?'sel':''}" data-a="pick" data-id="${x.id}">${x.h} ${esc(x.p.split(' ')[0])}</button>`).join('')}</div>`).join('')}</div></div>
+<div class="card"><h2>${a?'Edit booking: '+esc(a.p):'Book appointment'}</h2><div class="fr"><label>Patient<input id="ap" value="${a?esc(a.p):''}" ${a?'disabled':''} placeholder="Patient name"></label><label>Therapist<select id="at" ${a?'disabled':''}>${T().filter(t=>!mt||t.id==mt).map(t=>`<option value="${t.id}" ${a&&a.t==t.id?'selected':''}>${t.n}</option>`).join('')}</select></label><label>Date<select id="ad">${DAYS.map((d,i)=>`<option value="${d}" ${a&&a.d==d?'selected':''}>${WD[i]} ${d.slice(8)} Oct</option>`).join('')}</select></label><label>Time<select id="ah">${H.map(h=>`<option ${a&&a.h==h?'selected':''}>${h}</option>`).join('')}</select></label></div>
+${a?`<button class="btn" data-a="resch">Save new time</button> <button class="btn bad" data-a="cancel">Cancel appointment</button> <button class="btn ghost" data-a="clr">Close</button>`:`<button class="btn" data-a="book">Book appointment</button>`}</div>`},
+
+bill(){const f=document.getElementById('bf');return `<p class="sub">GST is optional per invoice. Share any invoice on WhatsApp in one tap.</p><div class="card" id="bf"><h2>New invoice</h2><div class="fr"><label>Patient<input id="bp" placeholder="Patient name"></label><label>Service<select id="bs">${Object.keys(PRICE).map(k=>`<option>${k} (${inr(PRICE[k])})</option>`).join('')}</select></label><label>Discount or referral code<input id="bc" placeholder="WELCOME10 or REF500"></label><label>GST<select id="bg"><option value="0">No GST</option><option>5</option><option>12</option><option>18</option></select></label><label>Payment<select id="bm"><option>Cash</option><option>Online</option></select></label><label>Status<select id="bt"><option value="1">Paid</option><option value="0">Unpaid</option></select></label></div><div class="tot" id="pv"></div><button class="btn ghost" data-a="code">Apply code</button> <button class="btn" data-a="inv">Create invoice</button></div>
+<div class="card"><h2>Invoices</h2><div class="wrap"><table><tr><th>No.</th><th>Patient</th><th>Item</th><th>GST</th><th>Total</th><th>Status</th><th></th></tr>${I.slice().reverse().map(i=>`<tr><td>${i.no}</td><td>${esc(i.p)}</td><td>${i.item}</td><td>${inr(i.gst)}</td><td>${inr(i.total)}</td><td><span class="pill ${i.paid?'ok':'wn'}">${i.paid?'Paid, '+i.mode:'Unpaid'}</span></td><td><a class="btn sm ghost" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`Movement Rehab invoice ${i.no}\nPatient: ${i.p}\n${i.item}\nTotal: ${inr(i.total)} (GST ${inr(i.gst)})\nStatus: ${i.paid?'Paid':'Payment pending'}`)}">WhatsApp</a></td></tr>`).join('')}</table></div></div>`},
+
+att(){const all=role=='Admin'||role=='Receptionist',rows=S.filter(s=>s.st&&(all||s.id==me)),days=5,txt=encodeURIComponent('Movement Rehab attendance, Oct 1-5 2026\n'+S.filter(s=>s.st).map(s=>`${s.n}: ${Object.keys(att[s.id]).length}/${days}`).join('\n'));
+return `<p class="sub">Staff check in and out here. Scanning an employee QR in Staff ID & QR also marks attendance.</p><div class="card"><h2>Today, 5 October</h2><div class="wrap"><table><tr><th>Employee</th><th>In</th><th>Out</th><th></th></tr>${rows.map(s=>{const t=tm[s.id]||{};return `<tr><td>${s.n}<br><small>${s.id}</small></td><td>${t.i||'-'}</td><td>${t.o||'-'}</td><td>${!t.i?`<button class="btn sm" data-a="in" data-id="${s.id}">Check in</button>`:!t.o?`<button class="btn sm ghost" data-a="outt" data-id="${s.id}">Check out</button>`:'<span class="pill ok">Done</span>'}</td></tr>`}).join('')}</table></div></div>
+<div class="card"><h2>Monthly report, October (1–5)</h2><div class="wrap"><table><tr><th>Employee</th><th>Days present</th><th>Attendance</th></tr>${S.filter(s=>s.st&&(all||s.id==me||role=='Physiotherapist'&&s.id==me)).map(s=>{const n=Object.keys(att[s.id]).length;return `<tr><td>${s.n}</td><td>${n} of ${days}</td><td><div class="bar"><i style="width:${n/days*100}%"></i></div></td></tr>`}).join('')}</table></div><p><a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/?text=${txt}">Share report on WhatsApp</a></p></div>`},
+
+shift(){const ed=role=='Admin',cl={M:'cM',E:'cE',Off:'cO',Leave:'cL'},nm={M:'Morning',E:'Evening',Off:'Off',Leave:'Leave'};
+return `<p class="sub">${ed?'Click a cell to change: Morning, Evening, Off, Leave.':'View only. Ask the admin to change a shift.'}</p><div class="card"><div class="wrap"><table><tr><th>Staff</th>${DAYS.map((d,i)=>`<th>${WD[i]} ${d.slice(8)}</th>`).join('')}</tr>${S.filter(s=>s.st).map(s=>`<tr><td>${s.n}</td>${sh[s.id].map((v,j)=>`<td><button class="cell ${cl[v]}" ${ed?`data-a="cyc" data-id="${s.id}" data-j="${j}"`:'disabled'}>${nm[v]}</button></td>`).join('')}</tr>`).join('')}<tr><td><b>Therapists available</b></td>${DAYS.map((_,j)=>`<td><b>${T().filter(t=>['M','E'].includes(sh[t.id][j])).length}</b></td>`).join('')}</tr></table></div></div>`},
+
+staff(){const adm=role=='Admin';return `<p class="sub">Each QR holds a random link, never personal data. Scanning shows only name, role and Active status.</p>
+<div class="card"><h2>Scan an employee</h2><div class="fr"><label>Employee ID or QR code<input id="sc" placeholder="MR-EMP-0009"></label><div><button class="btn" data-a="scan" style="margin-bottom:10px">Scan and mark present</button></div></div><div id="sr" class="tot" style="display:none"></div></div>
+${adm?`<div class="card"><h2>Add employee</h2><div class="fr"><label>Name<input id="en"></label><label>Role<select id="er"><option>Physiotherapist</option><option>Receptionist</option><option>Accountant</option></select></label><label>Qualification<input id="eq"></label></div><p class="sub" style="margin:0 0 10px">The ID is created automatically: next is <b>${nextId()}</b>.</p><button class="btn" data-a="addE">Create employee</button></div>`:''}
+<div class="g g2">${S.map(s=>`<div class="card idc"><div class="qr" id="qr${s.id}"></div><div><b>${esc(s.n)}</b><br><small>${s.r}, ${esc(s.q)}</small><br><b>${s.id}</b><br><span class="pill ${s.st?'ok':'bd'}">${s.st?'Active':'Inactive'}</span> ${adm&&s.st?`<button class="btn sm ghost" data-a="regen" data-id="${s.id}">New QR</button>`:''}</div></div>`).join('')}</div>`},
+
+perf(){const mt=myT(),rows=S.filter(s=>s.r=='Physiotherapist'&&(!mt||s.id==mt)),mx=Math.max(...rows.map(s=>sessCount(s.id)));
+return `<p class="sub">Based on completed sessions, cancellations, patient ratings and billed value.</p><div class="card"><div class="wrap"><table><tr><th>Therapist</th><th>Sessions</th><th style="width:25%"></th><th>Cancelled this week</th><th>Rating</th><th>Revenue</th></tr>${rows.map(s=>{const w=A.filter(a=>a.t==s.id),c=w.filter(a=>a.s=='Cancelled').length,n=sessCount(s.id);return `<tr><td>${s.n}${s.st?'':' <span class="pill bd">Inactive</span>'}</td><td>${n}</td><td><div class="bar"><i style="width:${n/mx*100}%"></i></div></td><td>${c} of ${w.length}</td><td>${RATE[s.id]} / 5</td><td>${inr(n*800)}</td></tr>`}).join('')}</table></div></div>`}};
+
+const nextId=()=>'MR-EMP-'+String(Math.max(...S.map(s=>+s.id.slice(-4)))+1).padStart(4,'0');
+function qrs(){S.forEach(s=>{const e=document.getElementById('qr'+s.id);if(e&&window.QRCode){e.innerHTML='';new QRCode(e,{text:'https://movementrehab.online/e/'+s.tok,width:92,height:92})}else if(e)e.textContent='QR'})}
+function calc(){const sv=$('#bs'),p=$('#pv');if(!sv)return 0;const price=PRICE[sv.value.replace(/ \(.*/,'')],d=applied?(applied.k=='pct'?price*applied.v/100:applied.v):0,g=(price-d)*(+$('#bg').value)/100,t=price-d+g;p.innerHTML=`Price ${inr(price)} − discount ${inr(d)} + GST ${inr(g)} = <b>${inr(t)}</b>${applied?' ('+applied.t+')':''}`;return {price,d,g,t}}
+const slotBusy=(t,d,h,ex)=>A.some(a=>a.t==t&&a.d==d&&a.h==h&&a.s!='Cancelled'&&a.id!=ex);
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const x=b.dataset,a=x.a;
+if(a=='next'){role=$('#role').value;if(!$('#em').value||!$('#pw').value)return $('#err').textContent='Enter your email and password.';step=2;login()}
+else if(a=='back'){step=1;login()}
+else if(a=='verify'){if($('#otp').value!='123456')return $('#err').textContent='Wrong code. Use 123456 for this demo.';me=U[role];V='dash';step=1;shell()}
+else if(a=='out'){me=null;role=null;step=1;login()}
+else if(a=='go'){V=x.v;SEL=null;shell();if(V=='bill')calc()}
+else if(a=='pick'){SEL=+x.id;shell()}else if(a=='clr'){SEL=null;shell()}
+else if(a=='book'){const p=$('#ap').value.trim(),t=$('#at').value,d=$('#ad').value,h=$('#ah').value;if(!p)return toast('Enter the patient name.');if(slotBusy(t,d,h))return toast('That therapist is already booked at this time.');add(p,t,d,h,'Scheduled');shell();toast('Appointment booked.')}
+else if(a=='resch'){const q=A.find(z=>z.id==SEL),d=$('#ad').value,h=$('#ah').value;if(slotBusy(q.t,d,h,q.id))return toast('That slot is taken.');q.d=d;q.h=h;q.s='Scheduled';SEL=null;shell();toast('Appointment rescheduled.')}
+else if(a=='cancel'){A.find(z=>z.id==SEL).s='Cancelled';SEL=null;shell();toast('Appointment cancelled.')}
+else if(a=='code'){const c=$('#bc').value.trim().toUpperCase();applied=CODES[c]||null;toast(applied?'Code applied: '+applied.t:'Code not valid. Try WELCOME10 or REF500.');calc()}
+else if(a=='inv'){const p=$('#bp').value.trim();if(!p)return toast('Enter the patient name.');const c=calc(),item=$('#bs').value.replace(/ \(.*/,'');I.push({no:'INV-2026-'+String(414+I.length-4).padStart(4,'0'),p,item,total:c.t,gst:c.g,disc:c.d,mode:$('#bm').value,paid:+$('#bt').value});applied=null;shell();calc();toast('Invoice created.')}
+else if(a=='in'){const n=new Date();tm[x.id]={i:n.toTimeString().slice(0,5)};att[x.id][TODAY]=1;shell();toast('Checked in.')}
+else if(a=='outt'){tm[x.id].o=new Date().toTimeString().slice(0,5);shell();toast('Checked out.')}
+else if(a=='cyc'){const j=+x.j,v=sh[x.id][j];sh[x.id][j]=SH[(SH.indexOf(v)+1)%4];shell()}
+else if(a=='scan'){const v=$('#sc').value.trim().replace(/.*\/e\//,''),s=S.find(z=>z.id.toLowerCase()==v.toLowerCase()||z.tok==v),r=$('#sr');r.style.display='block';
+if(!s||!s.st){r.innerHTML='<span class="pill bd">Not valid</span> This ID is unknown or inactive.';return}
+att[s.id][TODAY]=1;tm[s.id]=tm[s.id]||{i:new Date().toTimeString().slice(0,5)};r.innerHTML=`<span class="pill ok">Verified</span> <b>${s.n}</b>, ${s.r}. Marked present today.`}
+else if(a=='addE'){const n=$('#en').value.trim();if(!n)return toast('Enter the name.');const s={id:nextId(),n,r:$('#er').value,q:$('#eq').value||'-',st:1,tok:rnd()};S.push(s);att[s.id]={};sh[s.id]=DAYS.map(()=>'M');shell();toast('Created '+s.id)}
+else if(a=='regen'){S.find(z=>z.id==x.id).tok=rnd();shell();toast('New QR created. The old card no longer works.')}});
+document.addEventListener('change',e=>{if(e.target.id=='tf'){TF=e.target.value;shell()}if(['bs','bg'].includes(e.target.id))calc()});
+login();
+</script></body></html>
